@@ -7,7 +7,7 @@ import asyncio
 import random
 
 
-async def async_generator():
-    for _ in range(10):
-        await asyncio.sleep(1)
-        yield random.uniform(0, 10)
+async def wait_random(max_delay: int = 10) -> float:
+    delay = random.uniform(0, max_delay)
+    await asyncio.sleep(delay)
+    return delay
