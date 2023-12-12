@@ -3,11 +3,12 @@
 Basic Async Script
 """
 
-import asyncio
 import random
+import asyncio
+from typing import Generator
 
 
-async def wait_random(max_delay: int = 10) -> float:
-    delay = random.uniform(0, max_delay)
-    await asyncio.sleep(delay)
-    return delay
+async def async_generator() -> Generator[float, None, None]:
+    for i in range(10):
+        yield random.uniform(0, 10)
+        await asyncio.sleep(1)
